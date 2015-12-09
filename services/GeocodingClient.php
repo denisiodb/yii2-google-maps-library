@@ -93,20 +93,4 @@ class GeocodingClient extends ClientAbstract
 
         return parent::request();
     }
-    
-    /**
-     * Makes a reverse geocoding by Place ID
-     * 
-     * @param string $placeId
-     * @param array $params
-     * @return mixed|null
-     */
-    public function reverseById($placeId, $params = [])
-    {
-        $params['place_id'] = $placeId;
-
-        $this->params = ArrayHelper::merge($this->params, $params);
-
-        return parent::request();
-    }
 }
