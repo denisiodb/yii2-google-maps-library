@@ -79,7 +79,7 @@ class GeocodingClient extends ClientAbstract
     }
 
     /**
-     * Makes a reverse geocoding
+     * Makes a reverse geocoding by coordinates
      *
      * @param LatLng $coord
      * @param array $params parameters for the request. These override [GeocodingRequest::params].
@@ -88,6 +88,22 @@ class GeocodingClient extends ClientAbstract
     public function reverse(LatLng $coord, $params = [])
     {
         $params['latlng'] = $coord;
+
+        $this->params = ArrayHelper::merge($this->params, $params);
+
+        return parent::request();
+    }
+    
+    /**
+     * Makes a reverse geocoding by Place ID
+     * 
+     * @param string $placeId
+     * @param array $params
+     * @return mixed|null
+     */
+    public function reverseById($placeId, $params = [])
+    {
+        $params['place_id'] = $placeId;
 
         $this->params = ArrayHelper::merge($this->params, $params);
 
