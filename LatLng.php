@@ -174,7 +174,7 @@ class LatLng extends ObjectAbstract
     {
         $lat = number_format($this->getLat(), 10, '.', '');
         $lng = number_format($this->getLng(), 10, '.', '');
-        return "$lat, $lng";
+        return "$lat,$lng";
     }
 
     /**
